@@ -1,0 +1,30 @@
+/* =============================================================================
+   THEME: REBEL
+   Solo elección activa del usuario. Nunca default automático.
+   Inversión total — el amarillo es el fondo.
+   ============================================================================= */
+
+[data-theme="rebel"] {
+  --background: #F5C400;
+  --foreground: #0F0F0D;
+  --accent: #0F0F0D;
+
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radius: 0rem;
+
+  --shadow-card: 3px 3px 0 #0F0F0D;
+
+  --transition-base: 0ms steps(1);
+
+  --image-filter: contrast(1.15) saturate(1.25);
+}
+
+/* Compensación mínima de brillo en dark OS — imperceptible si funciona bien */
+@media (prefers-color-scheme: dark) {
+  [data-theme="rebel"] {
+    --background: #E8B800;
+  }
+}

@@ -1,0 +1,22 @@
+/* =============================================================================
+   THEME: LEARN
+   Punto de entrada dark OS. Terminal, sistema, proceso.
+   ============================================================================= */
+
+[data-theme="learn"] {
+  --background: #0F0F0D;
+  --foreground: #E8E6DC;
+  --accent: #F5C400;
+
+  --font-display: 'JetBrains Mono', 'Courier New', monospace;
+  --font-body: system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radius: 0.25rem;
+
+  --shadow-card: none;
+
+  --transition-base: 140ms linear;
+
+  --image-filter: saturate(0.82);
+}

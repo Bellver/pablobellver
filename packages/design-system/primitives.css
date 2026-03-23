@@ -1,0 +1,42 @@
+/* =============================================================================
+   PRIMITIVES
+   Valores brutos. Nunca usar directamente en componentes.
+   Solo los themes y semantic.css pueden referenciarlos.
+   ============================================================================= */
+
+:root {
+  /* Amarillo — hilo conductor de los tres themes */
+  --primitive-yellow-500: #F5C400;
+  --primitive-yellow-400: #E8B800; /* compensación dark OS en Rebel */
+
+  /* Negros y blancos */
+  --primitive-black-900: #0F0F0D;
+  --primitive-black-800: #111110;
+  --primitive-white: #FFFFFF;
+
+  /* Grises */
+  --primitive-gray-100: #E8E6DC; /* tinta Learn */
+  --primitive-gray-900: #0F0F0D;
+
+  /* Tipografías */
+  --primitive-font-serif: 'DM Serif Display', Georgia, serif;
+  --primitive-font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --primitive-font-display: 'Bebas Neue', Impact, sans-serif;
+  --primitive-font-body: system-ui, -apple-system, sans-serif;
+
+  /* Escala de radius */
+  --primitive-radius-none: 0px;
+  --primitive-radius-sm: 4px;
+  --primitive-radius-md: 8px;
+  --primitive-radius-lg: 16px;
+
+  /* Escala de sombras */
+  --primitive-shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --primitive-shadow-hard: 3px 3px 0 #0F0F0D;
+  --primitive-shadow-none: none;
+
+  /* Timings */
+  --primitive-timing-fast: 140ms;
+  --primitive-timing-base: 220ms;
+  --primitive-timing-none: 0ms;
+}

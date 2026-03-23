@@ -1,0 +1,33 @@
+/* =============================================================================
+   SEMANTIC TOKENS
+   Dos funciones:
+   1. Fallbacks en :root — evitan flash antes de que JS inyecte [data-theme]
+   2. Contrato explícito — lista canónica de tokens disponibles para componentes
+   
+   Los themes (open.css, learn.css, rebel.css) sobreescriben estos valores.
+   Los componentes SOLO usan estos tokens, nunca los primitivos.
+   ============================================================================= */
+
+:root {
+  /* Color */
+  --background: #FFFFFF;
+  --foreground: #111110;
+  --accent: #F5C400;
+
+  /* Tipografía */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Forma */
+  --radius: 0.5rem;
+
+  /* Sombras */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  /* Movimiento */
+  --transition-base: 220ms ease-out;
+
+  /* Imágenes */
+  --image-filter: none;
+}

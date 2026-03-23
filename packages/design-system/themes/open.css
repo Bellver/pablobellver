@@ -1,0 +1,22 @@
+/* =============================================================================
+   THEME: OPEN
+   Punto de entrada light OS. Editorial, cálido, con criterio.
+   ============================================================================= */
+
+[data-theme="open"] {
+  --background: #FFFFFF;
+  --foreground: #111110;
+  --accent: #F5C400;
+
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radius: 0.5rem;
+
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  --transition-base: 220ms ease-out;
+
+  --image-filter: none;
+}
