@@ -1,0 +1,10 @@
+/* =============================================================================
+   FONTS — Tipografías de marca pablobellver.com
+   Sobreescriben los roles genéricos de primitives.css del DS.
+   ============================================================================= */
+
+:root {
+  --primitive-font-serif:   'DM Serif Display', Georgia, serif;
+  --primitive-font-mono:    'JetBrains Mono', 'Courier New', monospace;
+  --primitive-font-display: 'Bebas Neue', Impact, sans-serif;
+}

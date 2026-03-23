@@ -7,6 +7,10 @@
    ============================================================================= */
 @import "../../../packages/design-system/tokens/primitives.css";
 @import "../../../packages/design-system/tokens/semantic.css";
+@import "../fonts.css";
+@import "../themes/open.css";
+@import "../themes/learn.css";
+@import "../themes/rebel.css";
 
 /* =============================================================================
    THEMES — identidad de pablobellver.com

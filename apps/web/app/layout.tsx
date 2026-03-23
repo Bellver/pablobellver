@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme/ThemeProvider'
 import { ThemeSwitcherClient } from '@/components/theme/ThemeSwitcherClient'
+import '@fontsource/dm-serif-display/400.css'
+import '@fontsource/jetbrains-mono/500.css'
+import '@fontsource/bebas-neue/400.css'
 import './globals.css'
 
 export const metadata: Metadata = {
