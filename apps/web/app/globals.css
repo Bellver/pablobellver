@@ -5,8 +5,8 @@
 /* =============================================================================
    DESIGN SYSTEM — primitivos y contrato semántico
    ============================================================================= */
-@import "../../packages/design-system/tokens/primitives.css";
-@import "../../packages/design-system/tokens/semantic.css";
+@import "../../../packages/design-system/tokens/primitives.css";
+@import "../../../packages/design-system/tokens/semantic.css";
 
 /* =============================================================================
    THEMES — identidad de pablobellver.com
