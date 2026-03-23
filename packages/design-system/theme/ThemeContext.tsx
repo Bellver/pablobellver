@@ -29,6 +29,10 @@ export function ThemeContextProvider({
   }
 
   useEffect(() => {
+    setTheme(defaultTheme)
+  }, [defaultTheme])
+
+  useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
