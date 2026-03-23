@@ -4,19 +4,58 @@
    ============================================================================= */
 
 [data-theme="open"] {
-  --background: #FFFFFF;
-  --foreground: #111110;
-  --accent: #F5C400;
 
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body: system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* Colores base */
+  --background:             var(--primitive-neutral-50);
+  --foreground:             var(--primitive-neutral-900);
 
-  --radius: 0.5rem;
+  /* Superficies */
+  --card:                   var(--primitive-neutral-50);
+  --card-foreground:        var(--primitive-neutral-900);
+  --popover:                var(--primitive-neutral-50);
+  --popover-foreground:     var(--primitive-neutral-900);
 
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  /* Acciones */
+  --primary:                var(--primitive-neutral-900);
+  --primary-foreground:     var(--primitive-neutral-50);
+  --secondary:              var(--primitive-neutral-100);
+  --secondary-foreground:   var(--primitive-neutral-900);
 
-  --transition-base: 220ms ease-out;
+  /* Estado */
+  --muted:                  var(--primitive-neutral-100);
+  --muted-foreground:       var(--primitive-neutral-500);
+  --accent:                 var(--primitive-yellow-500);
+  --accent-foreground:      var(--primitive-neutral-900);
+  --destructive:            var(--primitive-red-600);
+  --destructive-foreground: var(--primitive-neutral-50);
 
-  --image-filter: none;
+  /* Bordes */
+  --border:                 var(--primitive-neutral-200);
+  --input:                  var(--primitive-neutral-200);
+  --ring:                   var(--primitive-yellow-500);
+
+  /* Forma */
+  --radius:                 var(--primitive-radius-md);
+
+  /* Sidebar */
+  --sidebar:                        var(--primitive-neutral-100);
+  --sidebar-foreground:             var(--primitive-neutral-900);
+  --sidebar-primary:                var(--primitive-neutral-900);
+  --sidebar-primary-foreground:     var(--primitive-neutral-50);
+  --sidebar-accent:                 var(--primitive-yellow-500);
+  --sidebar-accent-foreground:      var(--primitive-neutral-900);
+  --sidebar-border:                 var(--primitive-neutral-200);
+  --sidebar-ring:                   var(--primitive-yellow-500);
+
+  /* Tipografía display — DM Serif Editorial */
+  --font-display:           var(--primitive-font-serif);
+
+  /* Sombras */
+  --shadow-card:            var(--primitive-shadow-soft);
+
+  /* Movimiento */
+  --transition-base:        var(--primitive-timing-base) ease-out;
+
+  /* Imágenes */
+  --image-filter:           none;
 }

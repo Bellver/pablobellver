@@ -4,19 +4,58 @@
    ============================================================================= */
 
 [data-theme="learn"] {
-  --background: #0F0F0D;
-  --foreground: #E8E6DC;
-  --accent: #F5C400;
 
-  --font-display: 'JetBrains Mono', 'Courier New', monospace;
-  --font-body: system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* Colores base */
+  --background:             var(--primitive-neutral-900);
+  --foreground:             var(--primitive-neutral-200);
 
-  --radius: 0.25rem;
+  /* Superficies */
+  --card:                   var(--primitive-neutral-800);
+  --card-foreground:        var(--primitive-neutral-200);
+  --popover:                var(--primitive-neutral-800);
+  --popover-foreground:     var(--primitive-neutral-200);
 
-  --shadow-card: none;
+  /* Acciones */
+  --primary:                var(--primitive-neutral-200);
+  --primary-foreground:     var(--primitive-neutral-900);
+  --secondary:              var(--primitive-neutral-700);
+  --secondary-foreground:   var(--primitive-neutral-200);
 
-  --transition-base: 140ms linear;
+  /* Estado */
+  --muted:                  var(--primitive-neutral-700);
+  --muted-foreground:       var(--primitive-neutral-400);
+  --accent:                 var(--primitive-yellow-500);
+  --accent-foreground:      var(--primitive-neutral-900);
+  --destructive:            var(--primitive-red-500);
+  --destructive-foreground: var(--primitive-neutral-900);
 
-  --image-filter: saturate(0.82);
+  /* Bordes */
+  --border:                 var(--primitive-neutral-700);
+  --input:                  var(--primitive-neutral-700);
+  --ring:                   var(--primitive-yellow-500);
+
+  /* Forma */
+  --radius:                 var(--primitive-radius-sm);
+
+  /* Sidebar */
+  --sidebar:                        var(--primitive-neutral-800);
+  --sidebar-foreground:             var(--primitive-neutral-200);
+  --sidebar-primary:                var(--primitive-yellow-500);
+  --sidebar-primary-foreground:     var(--primitive-neutral-900);
+  --sidebar-accent:                 var(--primitive-neutral-700);
+  --sidebar-accent-foreground:      var(--primitive-neutral-200);
+  --sidebar-border:                 var(--primitive-neutral-700);
+  --sidebar-ring:                   var(--primitive-yellow-500);
+
+  /* Tipografía display — JetBrains Mono Terminal */
+  --font-display:           var(--primitive-font-mono);
+
+  /* Sombras */
+  --shadow-card:            var(--primitive-shadow-none);
+
+  /* Movimiento */
+  --transition-base:        var(--primitive-timing-fast) linear;
+
+  /* Imágenes */
+  --image-filter:           saturate(0.82);
 }

@@ -1,33 +1,118 @@
 /* =============================================================================
    SEMANTIC TOKENS
+   
    Dos funciones:
    1. Fallbacks en :root — evitan flash antes de que JS inyecte [data-theme]
    2. Contrato explícito — lista canónica de tokens disponibles para componentes
    
-   Los themes (open.css, learn.css, rebel.css) sobreescriben estos valores.
-   Los componentes SOLO usan estos tokens, nunca los primitivos.
+   Los themes sobreescriben estos valores.
+   Los componentes SOLO usan tokens semánticos, nunca primitivos directamente.
+   shadcn usa estos mismos nombres — compatibilidad total.
    ============================================================================= */
 
 :root {
-  /* Color */
-  --background: #FFFFFF;
-  --foreground: #111110;
-  --accent: #F5C400;
 
-  /* Tipografía */
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body: system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* --- COLORES BASE --- */
+  --background:          var(--primitive-neutral-50);
+  --foreground:          var(--primitive-neutral-900);
 
-  /* Forma */
-  --radius: 0.5rem;
+  /* --- SUPERFICIES --- */
+  --card:                var(--primitive-neutral-50);
+  --card-foreground:     var(--primitive-neutral-900);
+  --popover:             var(--primitive-neutral-50);
+  --popover-foreground:  var(--primitive-neutral-900);
 
-  /* Sombras */
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  /* --- ACCIONES --- */
+  --primary:             var(--primitive-neutral-900);
+  --primary-foreground:  var(--primitive-neutral-50);
+  --secondary:           var(--primitive-neutral-100);
+  --secondary-foreground:var(--primitive-neutral-900);
 
-  /* Movimiento */
-  --transition-base: 220ms ease-out;
+  /* --- ESTADO --- */
+  --muted:               var(--primitive-neutral-100);
+  --muted-foreground:    var(--primitive-neutral-500);
+  --accent:              var(--primitive-yellow-500);
+  --accent-foreground:   var(--primitive-neutral-900);
+  --destructive:         var(--primitive-red-600);
+  --destructive-foreground: var(--primitive-neutral-50);
 
-  /* Imágenes */
-  --image-filter: none;
+  /* --- BORDES Y INPUTS --- */
+  --border:              var(--primitive-neutral-200);
+  --input:               var(--primitive-neutral-200);
+  --ring:                var(--primitive-neutral-400);
+
+  /* --- FORMA --- */
+  --radius:              var(--primitive-radius-md);
+
+  /* --- CHARTS (shadcn) --- */
+  --chart-1:             var(--primitive-yellow-500);
+  --chart-2:             var(--primitive-blue-500);
+  --chart-3:             var(--primitive-green-500);
+  --chart-4:             var(--primitive-purple-500);
+  --chart-5:             var(--primitive-red-500);
+
+  /* --- SIDEBAR (shadcn) --- */
+  --sidebar:                    var(--primitive-neutral-100);
+  --sidebar-foreground:         var(--primitive-neutral-900);
+  --sidebar-primary:            var(--primitive-neutral-900);
+  --sidebar-primary-foreground: var(--primitive-neutral-50);
+  --sidebar-accent:             var(--primitive-neutral-200);
+  --sidebar-accent-foreground:  var(--primitive-neutral-900);
+  --sidebar-border:             var(--primitive-neutral-200);
+  --sidebar-ring:               var(--primitive-neutral-400);
+
+  /* --- TIPOGRAFÍA --- */
+  --font-display:        var(--primitive-font-serif);
+  --font-body:           var(--primitive-font-body);
+  --font-mono:           var(--primitive-font-mono);
+
+  --text-xs:             var(--primitive-text-xs);
+  --text-sm:             var(--primitive-text-sm);
+  --text-base:           var(--primitive-text-base);
+  --text-lg:             var(--primitive-text-lg);
+  --text-xl:             var(--primitive-text-xl);
+  --text-2xl:            var(--primitive-text-2xl);
+  --text-3xl:            var(--primitive-text-3xl);
+  --text-4xl:            var(--primitive-text-4xl);
+  --text-5xl:            var(--primitive-text-5xl);
+
+  --font-regular:        var(--primitive-font-regular);
+  --font-medium:         var(--primitive-font-medium);
+  --font-bold:           var(--primitive-font-bold);
+
+  --leading-tight:       var(--primitive-leading-tight);
+  --leading-snug:        var(--primitive-leading-snug);
+  --leading-normal:      var(--primitive-leading-normal);
+  --leading-relaxed:     var(--primitive-leading-relaxed);
+
+  /* --- SPACING --- */
+  --space-0:             var(--primitive-space-0);
+  --space-1:             var(--primitive-space-1);
+  --space-2:             var(--primitive-space-2);
+  --space-3:             var(--primitive-space-3);
+  --space-4:             var(--primitive-space-4);
+  --space-5:             var(--primitive-space-5);
+  --space-6:             var(--primitive-space-6);
+  --space-8:             var(--primitive-space-8);
+  --space-10:            var(--primitive-space-10);
+  --space-12:            var(--primitive-space-12);
+  --space-16:            var(--primitive-space-16);
+  --space-20:            var(--primitive-space-20);
+  --space-24:            var(--primitive-space-24);
+
+  /* --- SOMBRAS --- */
+  --shadow-card:         var(--primitive-shadow-soft);
+
+  /* --- MOVIMIENTO --- */
+  --transition-base:     var(--primitive-timing-base) ease-out;
+  --image-filter:        none;
+
+  /* --- Z-INDEX --- */
+  --z-base:              var(--primitive-z-base);
+  --z-raised:            var(--primitive-z-raised);
+  --z-dropdown:          var(--primitive-z-dropdown);
+  --z-sticky:            var(--primitive-z-sticky);
+  --z-overlay:           var(--primitive-z-overlay);
+  --z-modal:             var(--primitive-z-modal);
+  --z-toast:             var(--primitive-z-toast);
 }

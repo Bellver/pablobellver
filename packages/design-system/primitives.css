@@ -5,38 +5,206 @@
    ============================================================================= */
 
 :root {
-  /* Amarillo — hilo conductor de los tres themes */
-  --primitive-yellow-500: #F5C400;
-  --primitive-yellow-400: #E8B800; /* compensación dark OS en Rebel */
 
-  /* Negros y blancos */
-  --primitive-black-900: #0F0F0D;
-  --primitive-black-800: #111110;
-  --primitive-white: #FFFFFF;
+/* =============================================================================
+   PRIMITIVES — Color Ramps
+   
+   APCA guidance por ramp:
+   - Fondos claros (50–200): combinar con texto 700–900
+   - Fondos oscuros (700–900): combinar con texto 50–100  
+   - Zona media (300–600): solo para decoración, bordes, iconos
+   ============================================================================= */
 
-  /* Grises */
-  --primitive-gray-100: #E8E6DC; /* tinta Learn */
-  --primitive-gray-900: #0F0F0D;
 
-  /* Tipografías */
-  --primitive-font-serif: 'DM Serif Display', Georgia, serif;
-  --primitive-font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* --- YELLOW --- */
+  /* Base: #F5C400 — hilo conductor de los tres themes */
+  --primitive-yellow-50:  #FFFDF0;
+  --primitive-yellow-100: #FFF8D6;
+  --primitive-yellow-200: #FFEE9C;
+  --primitive-yellow-300: #FFE066;
+  --primitive-yellow-400: #FFD426;
+  --primitive-yellow-500: #F5C400; /* brand */
+  --primitive-yellow-600: #D4A400;
+  --primitive-yellow-700: #A67F00;
+  --primitive-yellow-800: #7A5C00;
+  --primitive-yellow-900: #523D00;
+
+  /* --- NEUTRAL --- */
+  /* Base cálido: deriva de #0F0F0D y #FFFFFF */
+  --primitive-neutral-50:  #FAFAF9;
+  --primitive-neutral-100: #F5F4F0;
+  --primitive-neutral-200: #E8E6DC; /* foreground Learn */
+  --primitive-neutral-300: #D4D2C8;
+  --primitive-neutral-400: #A8A69C;
+  --primitive-neutral-500: #737270;
+  --primitive-neutral-600: #525150;
+  --primitive-neutral-700: #3A3938;
+  --primitive-neutral-800: #252422;
+  --primitive-neutral-900: #0F0F0D; /* brand black */
+
+  /* --- RED --- */
+  /* Uso semántico: destructive, errores */
+  --primitive-red-50:  #FFF5F5;
+  --primitive-red-100: #FFE4E4;
+  --primitive-red-200: #FECACA;
+  --primitive-red-300: #FCA5A5;
+  --primitive-red-400: #F87171;
+  --primitive-red-500: #EF4444;
+  --primitive-red-600: #DC2626;
+  --primitive-red-700: #B91C1C;
+  --primitive-red-800: #991B1B;
+  --primitive-red-900: #7F1D1D;
+
+  /* --- ORANGE --- */
+  /* Uso semántico: advertencias, estados intermedios */
+  --primitive-orange-50:  #FFF7ED;
+  --primitive-orange-100: #FFEDD5;
+  --primitive-orange-200: #FED7AA;
+  --primitive-orange-300: #FDBA74;
+  --primitive-orange-400: #FB923C;
+  --primitive-orange-500: #F97316;
+  --primitive-orange-600: #EA580C;
+  --primitive-orange-700: #C2410C;
+  --primitive-orange-800: #9A3412;
+  --primitive-orange-900: #7C2D12;
+
+  /* --- GREEN --- */
+  /* Uso semántico: éxito, confirmaciones */
+  --primitive-green-50:  #F0FDF4;
+  --primitive-green-100: #DCFCE7;
+  --primitive-green-200: #BBF7D0;
+  --primitive-green-300: #86EFAC;
+  --primitive-green-400: #4ADE80;
+  --primitive-green-500: #22C55E;
+  --primitive-green-600: #16A34A;
+  --primitive-green-700: #15803D;
+  --primitive-green-800: #166534;
+  --primitive-green-900: #14532D;
+
+  /* --- BLUE --- */
+  /* Uso semántico: información, links */
+  --primitive-blue-50:  #EFF6FF;
+  --primitive-blue-100: #DBEAFE;
+  --primitive-blue-200: #BFDBFE;
+  --primitive-blue-300: #93C5FD;
+  --primitive-blue-400: #60A5FA;
+  --primitive-blue-500: #3B82F6;
+  --primitive-blue-600: #2563EB;
+  --primitive-blue-700: #1D4ED8;
+  --primitive-blue-800: #1E40AF;
+  --primitive-blue-900: #1E3A8A;
+
+  /* --- PURPLE --- */
+  /* Uso semántico: accents secundarios */
+  --primitive-purple-50:  #FAF5FF;
+  --primitive-purple-100: #F3E8FF;
+  --primitive-purple-200: #E9D5FF;
+  --primitive-purple-300: #D8B4FE;
+  --primitive-purple-400: #C084FC;
+  --primitive-purple-500: #A855F7;
+  --primitive-purple-600: #9333EA;
+  --primitive-purple-700: #7E22CE;
+  --primitive-purple-800: #6B21A8;
+  --primitive-purple-900: #581C87;
+
+  /* --- PINK --- */
+  /* Uso semántico: accents expresivos */
+  --primitive-pink-50:  #FDF2F8;
+  --primitive-pink-100: #FCE7F3;
+  --primitive-pink-200: #FBCFE8;
+  --primitive-pink-300: #F9A8D4;
+  --primitive-pink-400: #F472B6;
+  --primitive-pink-500: #EC4899;
+  --primitive-pink-600: #DB2777;
+  --primitive-pink-700: #BE185D;
+  --primitive-pink-800: #9D174D;
+  --primitive-pink-900: #831843;
+
+  /* =========================================================================
+     TIPOGRAFÍA
+     ========================================================================= */
+
+  /* Familias */
+  --primitive-font-serif:   'DM Serif Display', Georgia, serif;
+  --primitive-font-mono:    'JetBrains Mono', 'Courier New', monospace;
   --primitive-font-display: 'Bebas Neue', Impact, sans-serif;
-  --primitive-font-body: system-ui, -apple-system, sans-serif;
+  --primitive-font-body:    system-ui, -apple-system, sans-serif;
 
-  /* Escala de radius */
+  /* Escala de tamaños */
+  --primitive-text-xs:   0.75rem;   /* 12px */
+  --primitive-text-sm:   0.875rem;  /* 14px */
+  --primitive-text-base: 1rem;      /* 16px */
+  --primitive-text-lg:   1.125rem;  /* 18px */
+  --primitive-text-xl:   1.25rem;   /* 20px */
+  --primitive-text-2xl:  1.5rem;    /* 24px */
+  --primitive-text-3xl:  1.875rem;  /* 30px */
+  --primitive-text-4xl:  2.25rem;   /* 36px */
+  --primitive-text-5xl:  3rem;      /* 48px */
+
+  /* Pesos */
+  --primitive-font-regular: 400;
+  --primitive-font-medium:  500;
+  --primitive-font-bold:    700;
+
+  /* Line heights */
+  --primitive-leading-tight:   1.2;
+  --primitive-leading-snug:    1.4;
+  --primitive-leading-normal:  1.6;
+  --primitive-leading-relaxed: 1.8;
+
+  /* =========================================================================
+     SPACING — Convención Tailwind (base 4px)
+     ========================================================================= */
+
+  --primitive-space-0:  0px;
+  --primitive-space-1:  0.25rem;  /* 4px */
+  --primitive-space-2:  0.5rem;   /* 8px */
+  --primitive-space-3:  0.75rem;  /* 12px */
+  --primitive-space-4:  1rem;     /* 16px */
+  --primitive-space-5:  1.25rem;  /* 20px */
+  --primitive-space-6:  1.5rem;   /* 24px */
+  --primitive-space-8:  2rem;     /* 32px */
+  --primitive-space-10: 2.5rem;   /* 40px */
+  --primitive-space-12: 3rem;     /* 48px */
+  --primitive-space-16: 4rem;     /* 64px */
+  --primitive-space-20: 5rem;     /* 80px */
+  --primitive-space-24: 6rem;     /* 96px */
+
+  /* =========================================================================
+     RADIUS
+     ========================================================================= */
+
   --primitive-radius-none: 0px;
-  --primitive-radius-sm: 4px;
-  --primitive-radius-md: 8px;
-  --primitive-radius-lg: 16px;
+  --primitive-radius-sm:   0.25rem; /* 4px */
+  --primitive-radius-md:   0.5rem;  /* 8px */
+  --primitive-radius-lg:   1rem;    /* 16px */
+  --primitive-radius-full: 9999px;
 
-  /* Escala de sombras */
+  /* =========================================================================
+     SOMBRAS
+     ========================================================================= */
+
   --primitive-shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
   --primitive-shadow-hard: 3px 3px 0 #0F0F0D;
   --primitive-shadow-none: none;
 
-  /* Timings */
+  /* =========================================================================
+     TIMINGS
+     ========================================================================= */
+
+  --primitive-timing-none: 0ms;
   --primitive-timing-fast: 140ms;
   --primitive-timing-base: 220ms;
-  --primitive-timing-none: 0ms;
+
+  /* =========================================================================
+     Z-INDEX
+     ========================================================================= */
+
+  --primitive-z-base:     0;
+  --primitive-z-raised:   10;
+  --primitive-z-dropdown: 100;
+  --primitive-z-sticky:   200;
+  --primitive-z-overlay:  300;
+  --primitive-z-modal:    400;
+  --primitive-z-toast:    500;
 }

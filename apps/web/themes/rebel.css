@@ -5,26 +5,65 @@
    ============================================================================= */
 
 [data-theme="rebel"] {
-  --background: #F5C400;
-  --foreground: #0F0F0D;
-  --accent: #0F0F0D;
 
-  --font-display: 'Bebas Neue', Impact, sans-serif;
-  --font-body: system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* Colores base */
+  --background:             var(--primitive-yellow-500);
+  --foreground:             var(--primitive-neutral-900);
 
-  --radius: 0rem;
+  /* Superficies */
+  --card:                   var(--primitive-yellow-400);
+  --card-foreground:        var(--primitive-neutral-900);
+  --popover:                var(--primitive-yellow-400);
+  --popover-foreground:     var(--primitive-neutral-900);
 
-  --shadow-card: 3px 3px 0 #0F0F0D;
+  /* Acciones */
+  --primary:                var(--primitive-neutral-900);
+  --primary-foreground:     var(--primitive-yellow-500);
+  --secondary:              var(--primitive-yellow-600);
+  --secondary-foreground:   var(--primitive-neutral-900);
 
-  --transition-base: 0ms steps(1);
+  /* Estado */
+  --muted:                  var(--primitive-yellow-600);
+  --muted-foreground:       var(--primitive-neutral-800);
+  --accent:                 var(--primitive-neutral-900);
+  --accent-foreground:      var(--primitive-yellow-500);
+  --destructive:            var(--primitive-red-700);
+  --destructive-foreground: var(--primitive-neutral-50);
 
-  --image-filter: contrast(1.15) saturate(1.25);
+  /* Bordes */
+  --border:                 var(--primitive-neutral-900);
+  --input:                  var(--primitive-neutral-900);
+  --ring:                   var(--primitive-neutral-900);
+
+  /* Forma — sin radius, esquinas vivas */
+  --radius:                 var(--primitive-radius-none);
+
+  /* Sidebar */
+  --sidebar:                        var(--primitive-yellow-600);
+  --sidebar-foreground:             var(--primitive-neutral-900);
+  --sidebar-primary:                var(--primitive-neutral-900);
+  --sidebar-primary-foreground:     var(--primitive-yellow-500);
+  --sidebar-accent:                 var(--primitive-yellow-400);
+  --sidebar-accent-foreground:      var(--primitive-neutral-900);
+  --sidebar-border:                 var(--primitive-neutral-900);
+  --sidebar-ring:                   var(--primitive-neutral-900);
+
+  /* Tipografía display — Bebas Neue uppercase */
+  --font-display:           var(--primitive-font-display);
+
+  /* Sombras — duras offset */
+  --shadow-card:            var(--primitive-shadow-hard);
+
+  /* Movimiento — corte inmediato */
+  --transition-base:        var(--primitive-timing-none) steps(1);
+
+  /* Imágenes */
+  --image-filter:           contrast(1.15) saturate(1.25);
 }
 
-/* Compensación mínima de brillo en dark OS — imperceptible si funciona bien */
+/* Compensación mínima de brillo en dark OS */
 @media (prefers-color-scheme: dark) {
   [data-theme="rebel"] {
-    --background: #E8B800;
+    --background: var(--primitive-yellow-400);
   }
 }
