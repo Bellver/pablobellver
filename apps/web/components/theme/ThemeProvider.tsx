@@ -1,22 +1,22 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { ThemeContextProvider, type Theme } from '@pablobellver/design-system'
 
-function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') return 'open'
-
-  const saved = localStorage.getItem('pb-theme') as Theme | null
-  if (saved && ['open', 'learn', 'rebel'].includes(saved)) return saved
-
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  return prefersDark ? 'learn' : 'open'
-}
-
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const initialTheme = getInitialTheme()
+  const [theme, setTheme] = useState<Theme>('open')
+
+  useEffect(() => {
+    const saved = localStorage.getItem('pb-theme') as Theme | null
+    if (saved && ['open', 'learn', 'rebel'].includes(saved)) {
+      setTheme(saved)
+    } else {
+      setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'learn' : 'open')
+    }
+  }, [])
 
   return (
-    <ThemeContextProvider defaultTheme={initialTheme}>
+    <ThemeContextProvider defaultTheme={theme}>
       {children}
     </ThemeContextProvider>
   )
