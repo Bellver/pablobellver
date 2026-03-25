@@ -124,11 +124,11 @@
      TIPOGRAFÍA
      ========================================================================= */
 
-  /* Familias */
-  --primitive-font-serif:   'DM Serif Display', Georgia, serif;
-  --primitive-font-mono:    'JetBrains Mono', 'Courier New', monospace;
-  --primitive-font-display: 'Bebas Neue', Impact, sans-serif;
-  --primitive-font-body:    system-ui, -apple-system, sans-serif;
+   /* Familias — roles genéricos, sin fuentes de marca */
+   --primitive-font-serif:   Georgia, serif;
+   --primitive-font-mono:    'Courier New', monospace;
+   --primitive-font-display: Impact, sans-serif;
+   --primitive-font-body:    system-ui, -apple-system, sans-serif;
 
   /* Escala de tamaños */
   --primitive-text-xs:   0.75rem;   /* 12px */

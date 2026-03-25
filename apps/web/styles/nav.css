@@ -1,0 +1,413 @@
+/* =============================================================================
+   NAV — Estilos de navegación
+   Adaptativo por [data-theme]. Nunca valores hardcodeados.
+   ============================================================================= */
+
+/* ── Header base ───────────────────────────────────────────────────────────── */
+
+.nav-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--background);
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-base);
+}
+
+.nav-header--scrolled {
+  border-bottom-color: var(--border);
+}
+
+/* LEARN: siempre con borde visible, el scroll ya está implícito */
+[data-theme="learn"] .nav-header {
+  border-bottom-color: var(--border);
+}
+
+/* REBEL: sin transición suave, borde grueso */
+[data-theme="rebel"] .nav-header {
+  border-bottom: 2px solid var(--foreground);
+}
+
+.nav-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+[data-theme="rebel"] .nav-inner {
+  height: 56px;
+}
+
+/* ── Wordmark ──────────────────────────────────────────────────────────────── */
+
+.nav-wordmark {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-wordmark-text {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+  transition: var(--transition-base);
+  display: block;
+}
+
+.nav-wordmark:hover .nav-wordmark-text {
+  color: var(--accent);
+}
+
+/* LEARN: prompt prefix */
+[data-theme="learn"] .nav-wordmark-text::before {
+  content: '> ';
+  color: var(--accent);
+}
+
+/* REBEL: all-caps display, más grande */
+[data-theme="rebel"] .nav-wordmark-text {
+  font-size: 1.875rem;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+[data-theme="rebel"] .nav-wordmark:hover .nav-wordmark-text {
+  color: var(--foreground);
+  -webkit-text-stroke: 1px var(--foreground);
+  /* painted → outlined */
+}
+
+/* ── Desktop links ─────────────────────────────────────────────────────────── */
+
+.nav-links {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: block;
+  }
+}
+
+.nav-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: var(--transition-base);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* Underline hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: var(--transition-base);
+}
+
+.nav-link:hover {
+  color: var(--foreground);
+}
+
+.nav-link:hover::after,
+.nav-link[data-active]::after {
+  width: 100%;
+}
+
+.nav-link[data-active] {
+  color: var(--foreground);
+}
+
+/* LEARN: monospace font, accent on active */
+[data-theme="learn"] .nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+[data-theme="learn"] .nav-link[data-active] {
+  color: var(--accent);
+}
+
+[data-theme="learn"] .nav-link::after {
+  background: var(--accent);
+}
+
+/* REBEL: Bebas Neue caps, bigger, no underline animation */
+[data-theme="rebel"] .nav-link {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  padding-bottom: 0;
+}
+
+[data-theme="rebel"] .nav-link::after {
+  display: none;
+}
+
+[data-theme="rebel"] .nav-link:hover,
+[data-theme="rebel"] .nav-link[data-active] {
+  color: var(--foreground);
+  -webkit-text-stroke: 1.5px var(--foreground);
+  /* paint → outline on hover */
+}
+
+/* ── Hamburger ─────────────────────────────────────────────────────────────── */
+
+.nav-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+  transition: var(--transition-base);
+}
+
+.nav-burger:hover {
+  background: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .nav-burger {
+    display: none;
+  }
+}
+
+.nav-burger-line {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--foreground);
+  border-radius: 1px;
+  transform-origin: center;
+  transition: var(--transition-base);
+}
+
+/* Burger → X */
+.nav-burger--open .nav-burger-line:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-burger--open .nav-burger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-burger--open .nav-burger-line:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* REBEL: líneas más gruesas, sin transición */
+[data-theme="rebel"] .nav-burger {
+  border-radius: 0;
+  gap: 4px;
+}
+
+[data-theme="rebel"] .nav-burger-line {
+  height: 2px;
+  border-radius: 0;
+}
+
+[data-theme="rebel"] .nav-burger--open .nav-burger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+[data-theme="rebel"] .nav-burger--open .nav-burger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ── Mobile overlay ────────────────────────────────────────────────────────── */
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.nav-overlay--open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Backdrop */
+.nav-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: oklch(0 0 0 / 0.45);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay--open::before {
+  opacity: 1;
+}
+
+/* ── Drawer ────────────────────────────────────────────────────────────────── */
+
+.nav-drawer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(360px, 88vw);
+  background: var(--background);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  box-shadow: -8px 0 32px oklch(0 0 0 / 0.12);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.nav-overlay--open .nav-drawer {
+  transform: translateX(0);
+}
+
+.nav-drawer-close {
+  align-self: flex-end;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  transition: var(--transition-base);
+  margin-bottom: 2rem;
+}
+
+.nav-drawer-close:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.nav-drawer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 0;
+}
+
+.nav-drawer-link {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.75rem);
+  line-height: 1.1;
+  color: var(--foreground);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition-base);
+}
+
+.nav-drawer-link:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.nav-drawer-link:hover {
+  color: var(--accent);
+  padding-left: 0.5rem;
+}
+
+.nav-drawer-link[data-active] {
+  color: var(--accent);
+}
+
+/* LEARN drawer */
+[data-theme="learn"] .nav-drawer {
+  border-left-color: var(--border);
+}
+
+[data-theme="learn"] .nav-drawer-link {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+}
+
+[data-theme="learn"] .nav-drawer-link::before {
+  content: '> ';
+  color: var(--muted-foreground);
+  font-size: 0.875em;
+}
+
+[data-theme="learn"] .nav-drawer-link[data-active]::before,
+[data-theme="learn"] .nav-drawer-link:hover::before {
+  color: var(--accent);
+}
+
+/* REBEL drawer */
+[data-theme="rebel"] .nav-drawer {
+  width: 100%;
+  border-left: none;
+  padding: 1.5rem 2rem;
+}
+
+[data-theme="rebel"] .nav-drawer-link {
+  font-size: clamp(3.5rem, 16vw, 6rem);
+  border-bottom: 2px solid var(--foreground);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+[data-theme="rebel"] .nav-drawer-link:first-child {
+  border-top: 2px solid var(--foreground);
+}
+
+[data-theme="rebel"] .nav-drawer-link:hover {
+  background: var(--foreground);
+  color: var(--background);
+  padding-left: 1rem;
+}
+
+[data-theme="rebel"] .nav-drawer-close {
+  border-radius: 0;
+  border: 2px solid var(--foreground);
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* Drawer footer */
+.nav-drawer-footer {
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}

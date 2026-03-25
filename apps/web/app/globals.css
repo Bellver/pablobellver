@@ -12,12 +12,32 @@
 @import "../themes/learn.css";
 @import "../themes/rebel.css";
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   FONT BRIDGE — conecta next/font (variables CSS en <html>) con los primitivos
+   El HTML element tiene --next-font-* cuando next/font los inyecta.
+   Los primitivos usan estos valores como fallback.
+   ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  --primitive-font-serif:   var(--next-font-serif, 'DM Serif Display', Georgia, serif);
+  --primitive-font-mono:    var(--next-font-mono, 'JetBrains Mono', 'Courier New', monospace);
+  --primitive-font-display: var(--next-font-display, 'Bebas Neue', Impact, sans-serif);
+}
+
 /* =============================================================================
    THEMES — identidad de pablobellver.com
    ============================================================================= */
 @import "../themes/open.css";
 @import "../themes/learn.css";
 @import "../themes/rebel.css";
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COMPONENT STYLES
+   ───────────────────────────────────────────────────────────────────────────── */
+@import "../styles/nav.css";
+@import "../styles/home.css";
+@import "../styles/now.css";
+@import "../styles/ghost-pages.css";
 
 /* =============================================================================
    TAILWIND — mapeo de tokens semánticos a clases utilitarias (build time)
