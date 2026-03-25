@@ -169,8 +169,8 @@ function HeroRebel() {
       {/* Right column — role + statement */}
       <div className="rebel-right">
         <div className="rebel-role">
-          <span>PRODUCT</span>
-          <span>DESIGNER</span>
+          <span style={{ textDecoration: 'line-through' }}>PRODUCT</span>
+          <span style={{ textDecoration: 'line-through' }}>DESIGNER</span>
         </div>
 
         <div className="rebel-statement">
