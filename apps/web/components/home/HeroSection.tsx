@@ -174,7 +174,7 @@ function HeroRebel() {
         </div>
 
         <div className="rebel-statement">
-          <p>DISEÑO QUE<br />NO PIDE<br />PERMISO.</p>
+          <p>MORIARTE<br />RULES.</p>
         </div>
       </div>
 
