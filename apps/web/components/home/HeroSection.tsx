@@ -34,14 +34,14 @@ function HeroOpen() {
         </p>
 
         <h1 id="hero-heading" className="hero-name">
-          Pablo
+          Driven by
           <br />
-          Bellver
+          <em>endless curiosity.</em>
         </h1>
 
         <p className="hero-tagline">
-          Diseño sistemas que hacen que el software complejo
-          parezca inevitable. Sin trucos — solo criterio.
+          Diseño sistemas que escalan y productos que la gente entiende.
+          Sin trucos — solo criterio.
         </p>
 
         <div className="hero-ctas">
