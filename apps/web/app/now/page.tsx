@@ -175,7 +175,10 @@ function Block({ block }: { block: NotionBlock }) {
               {cb.icon.emoji}
             </span>
           )}
-          <p><RT rich={cb.rich_text} /></p>
+          {cb.rich_text.length > 0 && <p><RT rich={cb.rich_text} /></p>}
+          {block.children && block.children.length > 0 && (
+            <BlocksRenderer groups={groupBlocks(block.children as NotionBlock[])} />
+          )}
         </div>
       )
     }

@@ -50,6 +50,7 @@ export type NotionBlock = {
   id: string
   type: BlockType | string
   has_children: boolean
+  children?: NotionBlock[]
   created_time: string
   last_edited_time: string
   [key: string]: unknown
@@ -116,7 +117,15 @@ async function fetchBlocks(blockId: string, revalidate: number): Promise<NotionB
     throw new Error(`[notion] Error al leer bloques de ${blockId}: HTTP ${res.status}`)
   }
   const data = await res.json()
-  return data.results ?? []
+  const blocks: NotionBlock[] = data.results ?? []
+
+  for (const block of blocks) {
+    if (block.has_children) {
+      block.children = await fetchBlocks(block.id, revalidate)
+    }
+  }
+
+  return blocks
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
