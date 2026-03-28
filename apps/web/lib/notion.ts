@@ -4,7 +4,7 @@
  * Usa fetch nativo de Next.js → ISR automático con next.revalidate.
  *
  * Variables de entorno requeridas en .env.local:
- *   NOTION_TOKEN        → Integration token (secret_...)
+ *   NOTION_TOKEN_NOW        → Integration token (secret_...)
  *   NOTION_NOW_PAGE_ID  → ID de la página "Now" en Notion
  */
 
@@ -68,8 +68,8 @@ export type NowPageData = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function headers() {
-  const token = process.env.NOTION_TOKEN
-  if (!token) throw new Error('[notion] NOTION_TOKEN no definido en .env.local')
+  const token = process.env.NOTION_TOKEN_NOW
+  if (!token) throw new Error('[notion] NOTION_TOKEN_NOW no definido en .env.local')
   return {
     Authorization: `Bearer ${token}`,
     'Notion-Version': NOTION_VER,

@@ -88,7 +88,7 @@ async function fetchBlocks(id: string) {
   return fetch(
     \`https://api.notion.com/v1/blocks/\${id}/children\`,
     {
-      headers: { Authorization: \`Bearer \${process.env.NOTION_TOKEN}\` },
+      headers: { Authorization: \`Bearer \${process.env.NOTION_TOKEN_NOW}\` },
       next: { revalidate: 3600 }, // ← ISR
     }
   ).then(r => r.json())

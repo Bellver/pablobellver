@@ -273,7 +273,7 @@ function NowError({ message }: { message: string }) {
           <p className="now-error-title">No se pudo conectar con Notion</p>
           <p className="now-error-body">{message}</p>
           <p className="now-error-hint">
-            Verifica <code>NOTION_TOKEN</code> y <code>NOTION_NOW_PAGE_ID</code>{' '}
+            Verifica <code>NOTION_TOKEN_NOW</code> y <code>NOTION_NOW_PAGE_ID</code>{' '}
             en <code>.env.local</code>
           </p>
         </div>
