@@ -221,7 +221,7 @@
   border-bottom: 2px solid var(--foreground);
 }
 
-/* Left — name */
+/* Left — name / imagen */
 .rebel-name-block {
   grid-column: 1;
   grid-row: 1 / 3;
@@ -229,6 +229,15 @@
   border-right: 2px solid var(--foreground);
   display: flex;
   align-items: flex-end;
+}
+
+.rebel-hero-image {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  border-right: 2px solid var(--foreground);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .rebel-name {
@@ -351,6 +360,12 @@
     border-bottom: 2px solid var(--foreground);
     align-items: flex-start;
     padding: 1.5rem;
+  }
+  .rebel-hero-image {
+    grid-column: 1;
+    grid-row: 1;
+    border-right: none;
+    border-bottom: 2px solid var(--foreground);
   }
   .rebel-right {
     grid-column: 1;

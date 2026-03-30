@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useTheme } from '@pablobellver/design-system'
+import { HeroImage } from '@/components/home/HeroImage'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Dispatcher — reads theme, renders correct hero variant
@@ -158,13 +159,8 @@ function HeroRebel() {
   return (
     <section className="hero hero-rebel" aria-labelledby="hero-heading">
 
-      {/* Name block — ocupa columna izquierda */}
-      <div className="rebel-name-block">
-        <h1 id="hero-heading" className="rebel-name">
-          <span className="rebel-name-pablo">PABLO</span>
-          <span className="rebel-name-bellver">BELLVER</span>
-        </h1>
-      </div>
+      {/* Ilustración — ocupa columna izquierda, sustituye al bloque de nombre */}
+      <HeroImage />
 
       {/* Right column — role + statement */}
       <div className="rebel-right">
