@@ -203,6 +203,33 @@ function Block({ block }: { block: NotionBlock }) {
     case 'divider':
       return <hr className="notion-divider" />
 
+    case 'toggle': {
+      const tg = block.toggle as { rich_text: RichText[] }
+      return (
+        <details className="notion-toggle">
+          <summary className="notion-toggle-button">
+            <span className="notion-toggle-icon" aria-hidden="true">▶</span>
+            <span><RT rich={tg.rich_text} /></span>
+          </summary>
+          {block.children && block.children.length > 0 && (
+            <div className="notion-toggle-content">
+              <BlocksRenderer groups={groupBlocks(block.children as NotionBlock[])} />
+            </div>
+          )}
+        </details>
+      )
+    }
+
+    case 'child_page': {
+      const cp = block.child_page as { title?: string }
+      return (
+        <div className="notion-child-page">
+          <span className="notion-child-page-icon" aria-hidden="true">📄</span>
+          <span className="notion-child-page-title">{cp?.title ?? 'Sin título'}</span>
+        </div>
+      )
+    }
+
     case 'image': {
       const img = block.image as {
         type: 'external' | 'file'

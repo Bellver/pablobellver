@@ -45,6 +45,8 @@ export type BlockType =
   | 'divider'
   | 'code'
   | 'image'
+  | 'toggle'
+  | 'child_page'
 
 export type NotionBlock = {
   id: string
