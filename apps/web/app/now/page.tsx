@@ -169,8 +169,21 @@ function Block({ block }: { block: NotionBlock }) {
     case 'callout': {
       const cb = block.callout as { icon?: { emoji?: string }; rich_text: RichText[] }
       const hasTitle = cb.rich_text.length > 0
+
+      // Extraer H3 del primer hijo si existe
+      const children = block.children as NotionBlock[] | undefined
+      let calloutTitleBlock: NotionBlock | null = null
+      let calloutChildren = children
+
+      if (children && children.length > 0 && children[0].type === 'heading_3') {
+        calloutTitleBlock = children[0]
+        calloutChildren = children.slice(1)
+      }
+
+      const hasCalloutTitle = hasTitle || !!calloutTitleBlock
+
       return (
-        <div className="notion-callout" data-has-title={hasTitle}>
+        <div className="notion-callout" data-has-title={hasCalloutTitle}>
           <div className="notion-callout-title">
             {cb.icon?.emoji && (
               <span className="notion-callout-icon" aria-hidden="true">
@@ -178,10 +191,11 @@ function Block({ block }: { block: NotionBlock }) {
               </span>
             )}
             {hasTitle && <p><RT rich={cb.rich_text} /></p>}
+            {calloutTitleBlock && <Block block={calloutTitleBlock} />}
           </div>
-          {block.children && block.children.length > 0 && (
+          {calloutChildren && calloutChildren.length > 0 && (
             <div className="notion-callout-content">
-              <BlocksRenderer groups={groupBlocks(block.children as NotionBlock[])} />
+              <BlocksRenderer groups={groupBlocks(calloutChildren)} />
             </div>
           )}
         </div>
