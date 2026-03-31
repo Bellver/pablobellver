@@ -172,14 +172,39 @@
 
 /* Callout */
 .notion-callout {
-  display: flex;
-  gap: 0.875rem;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   padding: 1rem 1.25rem;
   background: var(--muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   margin: 1rem 0;
+}
+
+.notion-callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.notion-callout-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.notion-callout-title p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.notion-callout-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
 }
 
 .notion-callout p {
@@ -189,16 +214,45 @@
   line-height: 1.65;
 }
 
-.notion-callout-icon {
-  font-size: 1.25rem;
-  line-height: 1;
-  flex-shrink: 0;
+/* Responsive 2-column layout */
+
+@media (min-width: 640px) {
+  .notion-callout[data-has-title="true"] {
+    grid-template-columns: 25% 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
 }
 
+@media (min-width: 768px) {
+  .notion-callout[data-has-title="true"] {
+    grid-template-columns: 30% 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .notion-callout[data-has-title="true"] {
+    grid-template-columns: minmax(220px, 28%) 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .notion-callout[data-has-title="true"] {
+    grid-template-columns: minmax(250px, 26%) 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Rebel theme */
+
 [data-theme="rebel"] .notion-callout {
+  background: var(--background);
   border: 2px solid var(--foreground);
   border-radius: 0;
 }
+
 
 /* Code block */
 .notion-code {
@@ -231,11 +285,24 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: var(--accent);
+  font-weight: 500;
   transition: var(--transition-base);
 }
 
 .notion-link:hover {
   color: var(--accent);
+  font-weight: 600;
+}
+
+[data-theme="rebel"] .notion-link {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+[data-theme="rebel"] .notion-link:hover {
+  font-weight: 700;
+  text-decoration-color: var(--foreground);
 }
 
 /* To-do */
@@ -399,8 +466,27 @@
 .now-experiment-link {
   color: var(--accent);
   text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-base);
 }
-.now-experiment-link:hover { text-decoration: underline; }
+
+.now-experiment-link:hover {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+[data-theme="rebel"] .now-experiment-link {
+  color: var(--foreground);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+[data-theme="rebel"] .now-experiment-link:hover {
+  font-weight: 700;
+  text-decoration-color: var(--foreground);
+}
 
 /* ── Error state ───────────────────────────────────────────────────────────── */
 

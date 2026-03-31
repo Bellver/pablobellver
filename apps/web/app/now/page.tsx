@@ -168,16 +168,21 @@ function Block({ block }: { block: NotionBlock }) {
 
     case 'callout': {
       const cb = block.callout as { icon?: { emoji?: string }; rich_text: RichText[] }
+      const hasTitle = cb.rich_text.length > 0
       return (
-        <div className="notion-callout">
-          {cb.icon?.emoji && (
-            <span className="notion-callout-icon" aria-hidden="true">
-              {cb.icon.emoji}
-            </span>
-          )}
-          {cb.rich_text.length > 0 && <p><RT rich={cb.rich_text} /></p>}
+        <div className="notion-callout" data-has-title={hasTitle}>
+          <div className="notion-callout-title">
+            {cb.icon?.emoji && (
+              <span className="notion-callout-icon" aria-hidden="true">
+                {cb.icon.emoji}
+              </span>
+            )}
+            {hasTitle && <p><RT rich={cb.rich_text} /></p>}
+          </div>
           {block.children && block.children.length > 0 && (
-            <BlocksRenderer groups={groupBlocks(block.children as NotionBlock[])} />
+            <div className="notion-callout-content">
+              <BlocksRenderer groups={groupBlocks(block.children as NotionBlock[])} />
+            </div>
           )}
         </div>
       )
