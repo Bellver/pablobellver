@@ -285,24 +285,11 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: var(--accent);
-  font-weight: 500;
   transition: var(--transition-base);
 }
 
 .notion-link:hover {
   color: var(--accent);
-  font-weight: 600;
-}
-
-[data-theme="rebel"] .notion-link {
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
-
-[data-theme="rebel"] .notion-link:hover {
-  font-weight: 700;
-  text-decoration-color: var(--foreground);
 }
 
 /* To-do */
@@ -466,27 +453,8 @@
 .now-experiment-link {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition-base);
 }
-
-.now-experiment-link:hover {
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-[data-theme="rebel"] .now-experiment-link {
-  color: var(--foreground);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: 2px;
-}
-
-[data-theme="rebel"] .now-experiment-link:hover {
-  font-weight: 700;
-  text-decoration-color: var(--foreground);
-}
+.now-experiment-link:hover { text-decoration: underline; }
 
 /* ── Error state ───────────────────────────────────────────────────────────── */
 
