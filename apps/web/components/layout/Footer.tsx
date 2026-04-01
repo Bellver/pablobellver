@@ -3,9 +3,10 @@ import { FooterNav } from './FooterNav'
 import { MetaBar }   from './MetaBar'
 
 const SOCIAL_LINKS = [
-  { href: 'https://www.linkedin.com/in/pablo-bellver/', label: 'LinkedIn' },
-  { href: 'https://pablobellver.substack.com',          label: 'Substack' },
-  { href: 'mailto:hola@pablobellver.com',               label: 'Email'    },
+  { href: 'https://www.linkedin.com/in/pablo-bellver/',   label: 'LinkedIn'  },
+  { href: 'https://www.instagram.com/pablobellver_/',     label: 'Instagram' },
+  { href: 'https://pablobellver.substack.com',            label: 'Substack'  },
+  { href: 'mailto:hola@pablobellver.com',                 label: 'Email'     },
 ] as const
 
 export function Footer() {
