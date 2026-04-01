@@ -2,49 +2,45 @@
 
 import { useTheme, type Theme } from './ThemeContext'
 
-const themes: { value: Theme; label: string }[] = [
-  { value: 'open', label: 'Open' },
-  { value: 'learn', label: 'Learn' },
-  { value: 'rebel', label: 'Rebel' },
-]
+const THEMES = ['open', 'learn', 'rebel'] as const
 
-export function ThemeSwitcher({ onThemeChange }: { onThemeChange?: (theme: Theme) => void } = {}) {
+const THEME_CONFIG: Record<Theme, { label: string; icon: string }> = {
+  open:  { label: 'Open',  icon: '●' },
+  learn: { label: 'Learn', icon: '▮' },
+  rebel: { label: 'Rebel', icon: '■' },
+}
+
+export function ThemeSwitcher({
+  onThemeChange,
+}: {
+  onThemeChange?: (theme: Theme) => void
+} = {}) {
   const { theme, setTheme } = useTheme()
+  const config = THEME_CONFIG[theme]
 
-  const handleChange = (newTheme: Theme) => {
-    setTheme(newTheme)
-    onThemeChange?.(newTheme)
+  const handleClick = () => {
+    const idx = THEMES.indexOf(theme)
+    const next = THEMES[(idx + 1) % THEMES.length]
+    setTheme(next)
+    onThemeChange?.(next)
   }
 
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: '24px',
-      right: '24px',
-      display: 'flex',
-      gap: '8px',
-      zIndex: 'var(--z-toast)',
-    }}>
-      {themes.map((t) => (
-        <button
-          key={t.value}
-          onClick={() => handleChange(t.value)}
-          style={{
-            padding: '8px 16px',
-            background: theme === t.value ? 'var(--foreground)' : 'var(--background)',
-            color: theme === t.value ? 'var(--background)' : 'var(--foreground)',
-            border: '1px solid var(--border)',
-            borderRadius: 'var(--radius)',
-            fontFamily: 'var(--font-body)',
-            fontSize: '14px',
-            cursor: 'pointer',
-            transition: 'var(--transition-base)',
-            boxShadow: 'var(--shadow-card)',
-          }}
-        >
-          {t.label}
-        </button>
-      ))}
-    </div>
+    <button
+      className="theme-switcher"
+      onClick={handleClick}
+      aria-label={`Theme: ${config.label}. Click to change`}
+      data-theme-value={theme}
+    >
+      <span className="theme-switcher__icon" aria-hidden="true">
+        {config.icon}
+      </span>
+      <span className="theme-switcher__name">
+        {config.label}
+      </span>
+      <span className="theme-switcher__cycle" aria-hidden="true">
+        →
+      </span>
+    </button>
   )
 }

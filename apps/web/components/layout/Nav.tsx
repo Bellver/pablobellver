@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { useTheme } from '@pablobellver/design-system'
+import { ThemeSwitcher, useTheme, type Theme } from '@pablobellver/design-system'
+import { NavThemeSwitcher } from './NavThemeSwitcher'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Config
@@ -15,6 +16,10 @@ const NAV_LINKS = [
   { href: '/playground', label: 'Playground' },
   { href: '/now',        label: '/now'       },
 ] as const
+
+function handleThemeChange(theme: Theme) {
+  localStorage.setItem('pb-theme', theme)
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Nav
@@ -78,13 +83,17 @@ export function Nav() {
                     data-active={isActive(href) ? 'true' : undefined}
                     aria-current={isActive(href) ? 'page' : undefined}
                   >
-                    {/* LEARN theme: wrap in brackets */}
                     {theme === 'learn' ? `[${label}]` : label}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
+
+          {/* Desktop ThemeSwitcher with dropdown */}
+          <div className="nav-theme-switcher">
+            <NavThemeSwitcher />
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -118,16 +127,8 @@ export function Nav() {
           aria-label="Menú de navegación"
         >
 
-          {/* Close button inside drawer */}
-          <button
-            className="nav-drawer-close"
-            onClick={() => setOpen(false)}
-            aria-label="Cerrar menú"
-          >
-            ✕
-          </button>
-
-          <nav aria-label="Navegación móvil">
+          {/* Nav links — centered vertically */}
+          <nav className="nav-drawer-nav" aria-label="Navegación móvil">
             <ul className="nav-drawer-links" role="list">
               {NAV_LINKS.map(({ href, label }) => (
                 <li key={href}>
@@ -144,8 +145,9 @@ export function Nav() {
             </ul>
           </nav>
 
+          {/* ThemeSwitcher — pinned to bottom */}
           <footer className="nav-drawer-footer">
-            <span>pablobellver.com</span>
+            <ThemeSwitcher onThemeChange={handleThemeChange} />
           </footer>
 
         </div>

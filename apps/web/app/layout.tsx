@@ -4,9 +4,9 @@ import {
   DM_Serif_Display,
   JetBrains_Mono,
 } from 'next/font/google'
-import { ThemeProvider }       from '@/components/theme/ThemeProvider'
-import { ThemeSwitcherClient } from '@/components/theme/ThemeSwitcherClient'
-import { Nav }                 from '@/components/layout/Nav'
+import { Footer }       from '@/components/layout/Footer'
+import { Nav }          from '@/components/layout/Nav'
+import { ThemeProvider } from '@/components/theme/ThemeProvider'
 import './globals.css'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -83,7 +83,7 @@ export default function RootLayout({
           <main id="main-content" tabIndex={-1}>
             {children}
           </main>
-          <ThemeSwitcherClient />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

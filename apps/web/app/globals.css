@@ -35,6 +35,7 @@
    COMPONENT STYLES
    ───────────────────────────────────────────────────────────────────────────── */
 @import "../styles/nav.css";
+@import "../styles/footer.css";
 @import "../styles/home.css";
 @import "../styles/now.css";
 @import "../styles/ghost-pages.css";
