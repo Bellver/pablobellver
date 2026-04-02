@@ -5,15 +5,60 @@ import { useTheme, type Theme } from '@pablobellver/design-system'
 
 const THEMES: Theme[] = ['open', 'learn', 'rebel']
 
-const THEME_CONFIG: Record<Theme, { label: string; icon: string; desc: string }> = {
-  open:  { label: 'Open',  icon: '●', desc: 'Light · Editorial' },
-  learn: { label: 'Learn', icon: '▮', desc: 'Dark · Terminal'   },
-  rebel: { label: 'Rebel', icon: '■', desc: 'Yellow · Raw'      },
+const THEME_CONFIG: Record<Theme, { label: string; desc: string }> = {
+  open:  { label: 'Open',  desc: 'Light · Editorial' },
+  learn: { label: 'Learn', desc: 'Dark · Terminal'   },
+  rebel: { label: 'Rebel', desc: 'Yellow · Raw'      },
 }
 
-function persistTheme(theme: Theme) {
+// ─────────────────────────────────────────────────────────────────────────────
+// SVG icon — circle for open/learn, square for rebel
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ThemeIcon({ theme, className }: { theme: Theme; className?: string }) {
+  if (theme === 'rebel') {
+    return (
+      <svg
+        className={className}
+        width="8"
+        height="8"
+        viewBox="0 0 8 8"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <rect width="8" height="8" />
+      </svg>
+    )
+  }
+  return (
+    <svg
+      className={className}
+      width="8"
+      height="8"
+      viewBox="0 0 8 8"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <circle cx="4" cy="4" r="4" />
+    </svg>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Persist helper
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function persistTheme(theme: Theme) {
   localStorage.setItem('pb-theme', theme)
 }
+
+export function cycleNext(current: Theme): Theme {
+  return THEMES[(THEMES.indexOf(current) + 1) % THEMES.length]
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NavThemeSwitcher — desktop only, cycle + dropdown
+// ─────────────────────────────────────────────────────────────────────────────
 
 export function NavThemeSwitcher() {
   const { theme, setTheme } = useTheme()
@@ -22,8 +67,8 @@ export function NavThemeSwitcher() {
 
   const config = THEME_CONFIG[theme]
 
-  const cycleTheme = () => {
-    const next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length]
+  const handleCycle = () => {
+    const next = cycleNext(theme)
     setTheme(next)
     persistTheme(next)
   }
@@ -58,15 +103,15 @@ export function NavThemeSwitcher() {
       {/* ── Cycle button ─────────────────────────────────────── */}
       <button
         className="nts__cycle"
-        onClick={cycleTheme}
+        onClick={handleCycle}
         aria-label={`Theme: ${config.label}. Click to cycle`}
       >
-        <span className="nts__icon" aria-hidden="true">{config.icon}</span>
+        <ThemeIcon theme={theme} className="nts__icon" />
         <span className="nts__name">{config.label}</span>
       </button>
 
       {/* ── Divider ──────────────────────────────────────────── */}
-      <div className="nts__divider" aria-hidden="true" />
+      <span className="nts__divider" aria-hidden="true">|</span>
 
       {/* ── Chevron ──────────────────────────────────────────── */}
       <button
@@ -92,7 +137,7 @@ export function NavThemeSwitcher() {
                 aria-selected={t === theme}
                 onClick={() => selectTheme(t)}
               >
-                <span className="nts__option-icon" aria-hidden="true">{c.icon}</span>
+                <ThemeIcon theme={t} className="nts__option-icon" />
                 <span className="nts__option-info">
                   <span className="nts__option-name">{c.label}</span>
                   <span className="nts__option-desc">{c.desc}</span>

@@ -185,23 +185,21 @@
 .nts {
   position: relative;
   display: inline-flex;
-  align-items: stretch;
+  align-items: center;
+  gap: 0;
 }
 
-/* Cycle button */
+/* Cycle button — no border, no background, plain text */
 .nts__cycle {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.375rem 0.625rem 0.375rem 0.75rem;
-  background: var(--background);
-  color: var(--foreground);
-  border: 1px solid var(--border);
-  border-right: none;
-  border-radius: var(--radius) 0 0 var(--radius);
-  box-shadow: var(--shadow-card);
+  padding: 0.25rem 0.5rem;
+  background: none;
+  color: var(--muted-foreground);
+  border: none;
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   cursor: pointer;
   transition: var(--transition-base);
   white-space: nowrap;
@@ -209,35 +207,50 @@
 }
 
 .nts__cycle:hover {
-  background: var(--muted);
+  color: var(--foreground);
 }
 
-/* Divider between cycle and chevron */
+/* SVG icon in cycle button */
+.nts__icon {
+  flex-shrink: 0;
+  color: var(--accent);
+  display: block;
+}
+
+[data-theme="rebel"] .nts__icon {
+  color: var(--foreground);
+}
+
+/* Label */
+.nts__name {
+  line-height: 1;
+}
+
+/* Divider — plain text character */
 .nts__divider {
-  width: 1px;
-  background: var(--border);
+  color: var(--border);
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: 0 0.125rem;
+  user-select: none;
   flex-shrink: 0;
 }
 
-/* Chevron button */
+/* Chevron — no border, no background */
 .nts__chevron {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.375rem 0.5rem;
-  background: var(--background);
+  padding: 0.25rem 0.375rem;
+  background: none;
   color: var(--muted-foreground);
-  border: 1px solid var(--border);
-  border-left: none;
-  border-radius: 0 var(--radius) var(--radius) 0;
-  box-shadow: var(--shadow-card);
+  border: none;
   cursor: pointer;
   transition: var(--transition-base);
   line-height: 1;
 }
 
 .nts__chevron:hover {
-  background: var(--muted);
   color: var(--foreground);
 }
 
@@ -251,24 +264,12 @@
   transform: rotate(180deg);
 }
 
-/* Icon + name */
-.nts__icon {
-  font-size: 0.5rem;
-  opacity: 0.7;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.nts__name {
-  line-height: 1;
-}
-
 /* Dropdown */
 .nts__dropdown {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 8px);
   right: 0;
-  min-width: 180px;
+  min-width: 188px;
   background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -304,17 +305,21 @@
 }
 
 .nts__option-icon {
-  font-size: 0.5rem;
-  opacity: 0.7;
   flex-shrink: 0;
   width: 12px;
-  text-align: center;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+}
+
+[data-theme="rebel"] .nts__option-icon {
+  color: var(--foreground);
 }
 
 .nts__option-info {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
   flex: 1;
 }
 
@@ -343,28 +348,11 @@
 [data-theme="learn"] .nts__cycle,
 [data-theme="learn"] .nts__chevron {
   font-family: var(--font-mono);
-  border-radius: 4px;
-  box-shadow: none;
-  background: var(--muted);
-}
-
-[data-theme="learn"] .nts__cycle {
-  border-radius: 4px 0 0 4px;
-}
-
-[data-theme="learn"] .nts__chevron {
-  border-radius: 0 4px 4px 0;
-}
-
-[data-theme="learn"] .nts__cycle:hover,
-[data-theme="learn"] .nts__chevron:hover {
-  background: var(--border);
 }
 
 [data-theme="learn"] .nts__dropdown {
   border-radius: 4px;
   box-shadow: none;
-  border-color: var(--border);
 }
 
 [data-theme="learn"] .nts__option {
@@ -376,41 +364,26 @@
   font-size: 0.75rem;
 }
 
+[data-theme="learn"] .nts__option-check {
+  color: var(--accent);
+}
+
 /* REBEL overrides */
-[data-theme="rebel"] .nts__cycle,
-[data-theme="rebel"] .nts__chevron {
-  border-radius: 0;
-  border: 2px solid var(--foreground);
-  box-shadow: 2px 2px 0 var(--foreground);
-  background: var(--background);
-  color: var(--foreground);
+[data-theme="rebel"] .nts__cycle {
   font-family: var(--font-display);
-  font-size: 0.875rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-[data-theme="rebel"] .nts__cycle {
-  border-right: none;
-  box-shadow: none;
-}
-
 [data-theme="rebel"] .nts__chevron {
-  border-left: none;
-  box-shadow: 2px 2px 0 var(--foreground);
-}
-
-[data-theme="rebel"] .nts__cycle:hover,
-[data-theme="rebel"] .nts__chevron:hover {
-  background: var(--foreground);
-  color: var(--background);
+  font-family: var(--font-display);
 }
 
 [data-theme="rebel"] .nts__divider {
-  background: var(--foreground);
-  width: 2px;
+  color: var(--foreground);
+  opacity: 0.3;
 }
-
 
 [data-theme="rebel"] .nts__dropdown {
   border: 2px solid var(--foreground);
@@ -427,7 +400,10 @@
 }
 
 [data-theme="rebel"] .nts__option:hover .nts__option-name,
-[data-theme="rebel"] .nts__option:hover .nts__option-desc,
+[data-theme="rebel"] .nts__option:hover .nts__option-desc {
+  color: var(--background);
+}
+
 [data-theme="rebel"] .nts__option:hover .nts__option-icon {
   color: var(--background);
 }
@@ -441,6 +417,52 @@
 
 [data-theme="rebel"] .nts__option-check {
   color: var(--foreground);
+}
+
+/* ── Mobile actions (theme icon + hamburger) ───────────────────────────────── */
+
+.nav-mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .nav-mobile-actions {
+    display: none;
+  }
+}
+
+/* Icon-only theme cycle button */
+.nav-mobile-theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: var(--transition-base);
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.nav-mobile-theme:hover {
+  background: var(--muted);
+}
+
+[data-theme="rebel"] .nav-mobile-theme {
+  border-radius: 0;
+  color: var(--foreground);
+}
+
+.nav-mobile-theme__icon {
+  display: block;
+  width: 10px;
+  height: 10px;
 }
 
 /* ── Hamburger ─────────────────────────────────────────────────────────────── */
@@ -463,12 +485,6 @@
 
 .nav-burger:hover {
   background: var(--muted);
-}
-
-@media (min-width: 768px) {
-  .nav-burger {
-    display: none;
-  }
 }
 
 .nav-burger-line {

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { ThemeSwitcher, useTheme, type Theme } from '@pablobellver/design-system'
-import { NavThemeSwitcher } from './NavThemeSwitcher'
+import { NavThemeSwitcher, ThemeIcon, persistTheme, cycleNext } from './NavThemeSwitcher'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Config
@@ -17,7 +17,7 @@ const NAV_LINKS = [
   { href: '/now',        label: '/now'       },
 ] as const
 
-function handleThemeChange(theme: Theme) {
+function handleDrawerThemeChange(theme: Theme) {
   localStorage.setItem('pb-theme', theme)
 }
 
@@ -27,7 +27,7 @@ function handleThemeChange(theme: Theme) {
 
 export function Nav() {
   const pathname  = usePathname()
-  const { theme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const [open, setOpen]         = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const drawerRef = useRef<HTMLDivElement>(null)
@@ -57,6 +57,12 @@ export function Nav() {
 
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href + '/'))
+
+  const handleMobileCycle = () => {
+    const next = cycleNext(theme)
+    setTheme(next)
+    persistTheme(next)
+  }
 
   return (
     <>
@@ -95,19 +101,29 @@ export function Nav() {
             <NavThemeSwitcher />
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className={`nav-burger${open ? ' nav-burger--open' : ''}`}
-            onClick={() => setOpen(v => !v)}
-            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-            aria-expanded={open}
-            aria-controls="nav-drawer"
-            aria-haspopup="dialog"
-          >
-            <span className="nav-burger-line" />
-            <span className="nav-burger-line" />
-            <span className="nav-burger-line" />
-          </button>
+          {/* Mobile: icon-only theme cycle + hamburger */}
+          <div className="nav-mobile-actions">
+            <button
+              className="nav-mobile-theme"
+              onClick={handleMobileCycle}
+              aria-label={`Theme: ${theme}. Click to cycle`}
+            >
+              <ThemeIcon theme={theme} className="nav-mobile-theme__icon" />
+            </button>
+
+            <button
+              className={`nav-burger${open ? ' nav-burger--open' : ''}`}
+              onClick={() => setOpen(v => !v)}
+              aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={open}
+              aria-controls="nav-drawer"
+              aria-haspopup="dialog"
+            >
+              <span className="nav-burger-line" />
+              <span className="nav-burger-line" />
+              <span className="nav-burger-line" />
+            </button>
+          </div>
 
         </div>
       </header>
@@ -147,7 +163,7 @@ export function Nav() {
 
           {/* ThemeSwitcher — pinned to bottom */}
           <footer className="nav-drawer-footer">
-            <ThemeSwitcher onThemeChange={handleThemeChange} />
+            <ThemeSwitcher onThemeChange={handleDrawerThemeChange} />
           </footer>
 
         </div>
