@@ -803,6 +803,7 @@
 .lab-card-link {
   text-decoration: none;
   display: block;
+  height: 100%;
 }
 
 .lab-card {
@@ -839,6 +840,11 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted-foreground);
+}
+
+.lab-date {
+  margin-left: auto;
+  opacity: 0.5;
 }
 
 .lab-title {
