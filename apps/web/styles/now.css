@@ -127,6 +127,10 @@
 .notion-spacer { height: 0.75rem; }
 
 /* Lists */
+ol.notion-list {
+  list-style-type: decimal;
+}
+
 .notion-list {
   padding-left: 1.5rem;
   margin: 0.5rem 0;
@@ -271,16 +275,17 @@
 
 /* Code block */
 .notion-code {
-  background: var(--card);
+  background: var(--muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1rem 1.25rem;
-  overflow-x: auto;
   margin: 1rem 0;
   font-family: var(--font-mono);
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--foreground);
+  color: var(--muted-foreground);
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* Inline code */
