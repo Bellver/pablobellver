@@ -220,6 +220,12 @@
   gap: 1rem;
 }
 
+.footer-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 [data-theme="rebel"] .footer-meta {
   border-top: 2px solid var(--foreground);
 }

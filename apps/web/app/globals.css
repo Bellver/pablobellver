@@ -39,6 +39,7 @@
 @import "../styles/home.css";
 @import "../styles/now.css";
 @import "../styles/ghost-pages.css";
+@import "../styles/sitemap.css";
 
 /* =============================================================================
    TAILWIND — mapeo de tokens semánticos a clases utilitarias (build time)
