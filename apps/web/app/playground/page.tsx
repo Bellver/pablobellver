@@ -24,26 +24,50 @@ const EXPERIMENTS = [
     date: '2026-03',
   },
   {
-    slug: 'theme-system',
-    title: 'Sistema de tres themes',
-    description: 'Tres identidades visuales, un único design system. CSS tokens + Next.js App Router.',
+    slug: 'theme-switcher',
+    title: 'Serie — ThemeSwitcher',
+    description: 'Tres identidades visuales, un sistema compartido. La serie documenta lo que ocurre cuando construyes algo con ambición real y empiezas a ver en qué se queda corto.',
     tags: ['CSS', 'Design Tokens', 'React'],
     status: 'ghost' as const,
     date: null,
   },
   {
-    slug: 'type-scale',
-    title: 'Escala tipográfica fluida',
-    description: 'Generador de escalas con clamp() y tokens semánticos. Para diseñadores y devs.',
-    tags: ['CSS', 'Typography', 'Tokens'],
+    slug: 'lumina-icons',
+    title: 'Lumina Icons',
+    description: 'Librería de iconos open-source construida sobre principios de design systems. Nació de un artículo. Ya tiene tracción real en Figma Community.',
+    tags: ['Icons', 'Design Systems', 'Figma'],
     status: 'ghost' as const,
     date: null,
   },
   {
-    slug: 'apca-checker',
-    title: 'APCA contrast checker',
-    description: 'Verificador de contraste con el algoritmo APCA. Más preciso que WCAG para texto real.',
-    tags: ['Accesibilidad', 'Color', 'APCA'],
+    slug: 'career-timeline',
+    title: 'Career Timeline',
+    description: 'Línea de vida interactiva con radar de habilidades que crece con el scroll. No es un CV — es una historia.',
+    tags: ['Data Viz', 'Animation', 'Career'],
+    status: 'ghost' as const,
+    date: null,
+  },
+  {
+    slug: 'bubble-text',
+    title: 'Bubble Text',
+    description: 'Tipografía burbuja de jabón en SVG puro. Bump mapping 3D sin librerías externas. Cada letra es una esfera iluminada de forma independiente.',
+    tags: ['SVG', 'CSS', 'Animation'],
+    status: 'ghost' as const,
+    date: null,
+  },
+  {
+    slug: 'pablo-bot',
+    title: 'Pablo Bot',
+    description: 'Agente conversacional que permite hablar directamente con Pablo — mediado por IA. Personas primero, trabajo como consecuencia.',
+    tags: ['Claude API', 'AI', 'Chat'],
+    status: 'ghost' as const,
+    date: null,
+  },
+  {
+    slug: 'visual-changelog',
+    title: 'Visual Changelog',
+    description: 'Screenshots automáticos en cada deploy relevante. El sitio documenta su propia evolución. Cuando acumule historia suficiente, se gradúa a /changelog.',
+    tags: ['Playwright', 'Automation', 'Git'],
     status: 'ghost' as const,
     date: null,
   },
@@ -80,6 +104,9 @@ export default function PlaygroundPage() {
               </Link>
             ) : (
               <article className="lab-card lab-card--ghost">
+                <div className="lab-live-badge">
+                  <span>Próximamente</span>
+                </div>
                 <h2 className="lab-title">{exp.title}</h2>
                 <p className="lab-desc">{exp.description}</p>
                 <ul className="tag-list" role="list">

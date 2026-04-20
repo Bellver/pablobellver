@@ -66,6 +66,13 @@ const WRITING: WritingItem[] = [
 
 const LAB: LabItem[] = [
   {
+    slug: 'claude-notion-mcp',
+    title: 'Claude Code + Notion MCP',
+    description: 'Conectar Claude Code al workspace de Notion para consultar y documentar directamente desde VS Code.',
+    tags: ['Claude Code', 'MCP', 'Notion'],
+    status: 'live',
+  },
+  {
     slug: 'notion-cms',
     title: 'Notion como CMS',
     description: 'Server Component que lee directamente la API de Notion con ISR. Sin intermediario.',
@@ -73,10 +80,10 @@ const LAB: LabItem[] = [
     status: 'live',
   },
   {
-    slug: 'theme-system',
-    title: 'Sistema de tres themes',
-    description: 'Tres identidades visuales, un único design system. Cómo está construido este sitio.',
-    tags: ['CSS Tokens', 'Design Systems', 'React'],
+    slug: 'career-timeline',
+    title: 'Career Timeline',
+    description: 'Línea de vida interactiva con radar de habilidades que crece con el scroll. No es un CV — es una historia.',
+    tags: ['Data Viz', 'Animation', 'Career'],
     status: 'ghost',
   },
 ]
@@ -308,12 +315,16 @@ export function PlaygroundTeaser() {
 function LabCard({ item }: { item: LabItem }) {
   const card = (
     <article className={`lab-card${item.status === 'ghost' ? ' lab-card--ghost' : ''}`}>
-      {item.status === 'live' && (
-        <div className="lab-live-badge">
-          <span className="now-dot" aria-hidden="true" />
-          <span>Live</span>
-        </div>
-      )}
+      <div className="lab-live-badge">
+        {item.status === 'live' ? (
+          <>
+            <span className="now-dot" aria-hidden="true" />
+            <span>Live</span>
+          </>
+        ) : (
+          <span>Próximamente</span>
+        )}
+      </div>
       <h3 className="lab-title">{item.title}</h3>
       <p className="lab-desc">{item.description}</p>
       <ul className="tag-list" role="list">
